@@ -20,7 +20,6 @@ class Motor{
 		void stop();
 		void right();
 		void left();
-		void back();
 		void func();
 		void setSpeed(long speed);
 };

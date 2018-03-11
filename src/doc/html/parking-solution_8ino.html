@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>parking-solution: Referência ao ficheiro parking-solution.ino</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">parking-solution
+   </div>
+   <div id="projectbrief">Ferramenta para Gerenciar Vagas em Estacionamento de VeiculosAutonomos:umaimplementacaousandoaplataformaArduino</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Funções</a> &#124;
+<a href="#var-members">Variáveis</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro parking-solution.ino</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Este código implementa o veículo testado na solução de estacionamento baseada em comunicação V2I. Para mais detalhes acesse: <a href="https://github.com/minimiz3d/parking-solution">https://github.com/minimiz3d/parking-solution</a>.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;ESP8266.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;Motor.h&quot;</code><br />
+<code>#include &quot;Follow.h&quot;</code><br />
+<code>#include &quot;Ultrassonic.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aaf46549480a528db5ba7d78e7270b5a9"><td class="memItemLeft" align="right" valign="top"><a id="aaf46549480a528db5ba7d78e7270b5a9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SSID</b>&#160;&#160;&#160;&quot;dlink-4&quot;</td></tr>
+<tr class="separator:aaf46549480a528db5ba7d78e7270b5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e8538fad4eee548302ad9f60e6d47ca"><td class="memItemLeft" align="right" valign="top"><a id="a9e8538fad4eee548302ad9f60e6d47ca"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PASSWORD</b>&#160;&#160;&#160;&quot;abcd1234&quot;</td></tr>
+<tr class="separator:a9e8538fad4eee548302ad9f60e6d47ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a614217d263be1fb1a5f76e2ff7be19a2"><td class="memItemLeft" align="right" valign="top"><a id="a614217d263be1fb1a5f76e2ff7be19a2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PORT</b>&#160;&#160;&#160;8070</td></tr>
+<tr class="separator:a614217d263be1fb1a5f76e2ff7be19a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a3ff51a8faea0d47e46d5ae9fceb45988"><td class="memItemLeft" align="right" valign="top"><a id="a3ff51a8faea0d47e46d5ae9fceb45988"></a>
+ESP8266&#160;</td><td class="memItemRight" valign="bottom"><b>wifi</b> (Serial1)</td></tr>
+<tr class="separator:a3ff51a8faea0d47e46d5ae9fceb45988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top"><a id="a4fc01d736fe50cf5b977f755b675f11d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parking-solution_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
+<tr class="memdesc:a4fc01d736fe50cf5b977f755b675f11d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que define as configurações de comunicação a ser utilizada. <br /></td></tr>
+<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top"><a id="afe461d27b9c48d5921c00d521181f12f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parking-solution_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
+<tr class="memdesc:afe461d27b9c48d5921c00d521181f12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método principal que executa continuamente. Aqui é implementada a troca de informações entre veículo e central. <br /></td></tr>
+<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa00cb28ff23a19c53ea81f55d85a66"><td class="memItemLeft" align="right" valign="top"><a id="a1fa00cb28ff23a19c53ea81f55d85a66"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parking-solution_8ino.html#a1fa00cb28ff23a19c53ea81f55d85a66">followLine</a> ()</td></tr>
+<tr class="memdesc:a1fa00cb28ff23a19c53ea81f55d85a66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que implementa a movimentação do veículo baseada no método seguidor de linha. A "percepção" do veículo quanto ao trajeto é realizada por cálculos que levam em conta a refletância atual dos sensores QRE1113. <br /></td></tr>
+<tr class="separator:a1fa00cb28ff23a19c53ea81f55d85a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e884bfc5853965874210cfb2edbfa14"><td class="memItemLeft" align="right" valign="top"><a id="a5e884bfc5853965874210cfb2edbfa14"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parking-solution_8ino.html#a5e884bfc5853965874210cfb2edbfa14">processMsg</a> ()</td></tr>
+<tr class="memdesc:a5e884bfc5853965874210cfb2edbfa14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que processa as mensagens advindas da central. <br /></td></tr>
+<tr class="separator:a5e884bfc5853965874210cfb2edbfa14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb16af85febe65a8f968f271378aba74"><td class="memItemLeft" align="right" valign="top"><a id="afb16af85febe65a8f968f271378aba74"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parking-solution_8ino.html#afb16af85febe65a8f968f271378aba74">sendMsg</a> ()</td></tr>
+<tr class="memdesc:afb16af85febe65a8f968f271378aba74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método de transmissão de dados para a central. <br /></td></tr>
+<tr class="separator:afb16af85febe65a8f968f271378aba74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28085526e415309b308fea6fc73d744f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parking-solution_8ino.html#a28085526e415309b308fea6fc73d744f">checkParkingStatus</a> ()</td></tr>
+<tr class="memdesc:a28085526e415309b308fea6fc73d744f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que verifica a proximidade com a parede (fim de estacionamento).  <a href="#a28085526e415309b308fea6fc73d744f">Mais...</a><br /></td></tr>
+<tr class="separator:a28085526e415309b308fea6fc73d744f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:aa85fb31c2a5bce22940ba03366a50ab3"><td class="memItemLeft" align="right" valign="top"><a id="aa85fb31c2a5bce22940ba03366a50ab3"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>arrivalThr</b> = 995</td></tr>
+<tr class="separator:aa85fb31c2a5bce22940ba03366a50ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ec0bd88a5394de7d097d530c35c32c"><td class="memItemLeft" align="right" valign="top"><a id="aa5ec0bd88a5394de7d097d530c35c32c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>defaultThr</b> = 850</td></tr>
+<tr class="separator:aa5ec0bd88a5394de7d097d530c35c32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a218b4f7c6cc2681a99c23a3b089d68b1"><td class="memItemLeft" align="right" valign="top"><a id="a218b4f7c6cc2681a99c23a3b089d68b1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b> = 120</td></tr>
+<tr class="separator:a218b4f7c6cc2681a99c23a3b089d68b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7b7134b6a2eb8f7c4db6eb16b2dfc7c"><td class="memItemLeft" align="right" valign="top"><a id="aa7b7134b6a2eb8f7c4db6eb16b2dfc7c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>parkingSpeed</b> = 180</td></tr>
+<tr class="separator:aa7b7134b6a2eb8f7c4db6eb16b2dfc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a1e82701eb2e381658ab63b26b9e30"><td class="memItemLeft" align="right" valign="top"><a id="aa8a1e82701eb2e381658ab63b26b9e30"></a>
+<a class="el" href="class_motor.html">Motor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>motor</b> = new <a class="el" href="class_motor.html">Motor</a>(6, 7, 9, 8, 10, 11)</td></tr>
+<tr class="separator:aa8a1e82701eb2e381658ab63b26b9e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38da3453ce0afdded979e2c2161c51de"><td class="memItemLeft" align="right" valign="top"><a id="a38da3453ce0afdded979e2c2161c51de"></a>
+<a class="el" href="class_ultrassonic.html">Ultrassonic</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ultrassonic</b> = new <a class="el" href="class_ultrassonic.html">Ultrassonic</a>(A0, A1)</td></tr>
+<tr class="separator:a38da3453ce0afdded979e2c2161c51de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73ef847c074d2baf460c59f251ffd3d4"><td class="memItemLeft" align="right" valign="top"><a id="a73ef847c074d2baf460c59f251ffd3d4"></a>
+<a class="el" href="class_follow.html">Follow</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>followmiddle</b> = new <a class="el" href="class_follow.html">Follow</a>(A2)</td></tr>
+<tr class="separator:a73ef847c074d2baf460c59f251ffd3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a046cfba371102afa4af12b8518dbb054"><td class="memItemLeft" align="right" valign="top"><a id="a046cfba371102afa4af12b8518dbb054"></a>
+<a class="el" href="class_follow.html">Follow</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>followleft</b> = new <a class="el" href="class_follow.html">Follow</a>(A3)</td></tr>
+<tr class="separator:a046cfba371102afa4af12b8518dbb054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469ba30678c24ff29c0312b8f1b86d57"><td class="memItemLeft" align="right" valign="top"><a id="a469ba30678c24ff29c0312b8f1b86d57"></a>
+<a class="el" href="class_follow.html">Follow</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>followright</b> = new <a class="el" href="class_follow.html">Follow</a>(A5)</td></tr>
+<tr class="separator:a469ba30678c24ff29c0312b8f1b86d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade5862e7d955b2d0109f6c292405f0b1"><td class="memItemLeft" align="right" valign="top"><a id="ade5862e7d955b2d0109f6c292405f0b1"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>mux_id</b></td></tr>
+<tr class="separator:ade5862e7d955b2d0109f6c292405f0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8800a1986a982d20f57611c8720de7"><td class="memItemLeft" align="right" valign="top"><a id="afa8800a1986a982d20f57611c8720de7"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buffer</b> [128] = {0}</td></tr>
+<tr class="separator:afa8800a1986a982d20f57611c8720de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32d2f5216cddb59c7cc8fb2806a7e727"><td class="memItemLeft" align="right" valign="top"><a id="a32d2f5216cddb59c7cc8fb2806a7e727"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>msg</b> = &quot;arduino\n&quot;</td></tr>
+<tr class="separator:a32d2f5216cddb59c7cc8fb2806a7e727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a1338eb3eaa558722a2778f33e7b407"><td class="memItemLeft" align="right" valign="top"><a id="a3a1338eb3eaa558722a2778f33e7b407"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>flagCheguei</b> = false</td></tr>
+<tr class="separator:a3a1338eb3eaa558722a2778f33e7b407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee9399e0ee90a2982d7de00ac826f097"><td class="memItemLeft" align="right" valign="top"><a id="aee9399e0ee90a2982d7de00ac826f097"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ack</b> = false</td></tr>
+<tr class="separator:aee9399e0ee90a2982d7de00ac826f097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae00f7a5afdb222cb3fb2b6717b86f57f"><td class="memItemLeft" align="right" valign="top"><a id="ae00f7a5afdb222cb3fb2b6717b86f57f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>parking</b> = false</td></tr>
+<tr class="separator:ae00f7a5afdb222cb3fb2b6717b86f57f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d67bd6634a9002df97231d8c8dbc66c"><td class="memItemLeft" align="right" valign="top"><a id="a1d67bd6634a9002df97231d8c8dbc66c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ok</b> = false</td></tr>
+<tr class="separator:a1d67bd6634a9002df97231d8c8dbc66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a376eb4e1c9db5513980312a882b7bbce"><td class="memItemLeft" align="right" valign="top"><a id="a376eb4e1c9db5513980312a882b7bbce"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>distCounter</b> = 0</td></tr>
+<tr class="separator:a376eb4e1c9db5513980312a882b7bbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a793aeddf47ecb66af07b09370794b7db"><td class="memItemLeft" align="right" valign="top"><a id="a793aeddf47ecb66af07b09370794b7db"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vaga</b> = 0</td></tr>
+<tr class="separator:a793aeddf47ecb66af07b09370794b7db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Este código implementa o veículo testado na solução de estacionamento baseada em comunicação V2I. Para mais detalhes acesse: <a href="https://github.com/minimiz3d/parking-solution">https://github.com/minimiz3d/parking-solution</a>. </p>
+<dl class="section author"><dt>Autor</dt><dd>Árthur Tolfo Pinheiro </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>2018-03-10 </dd></dl>
+</div><h2 class="groupheader">Documentação das funções</h2>
+<a id="a28085526e415309b308fea6fc73d744f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28085526e415309b308fea6fc73d744f">&#9670;&nbsp;</a></span>checkParkingStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool checkParkingStatus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Método que verifica a proximidade com a parede (fim de estacionamento). </p>
+<dl class="section return"><dt>Retorna</dt><dd>true Quando o veículo deve continuar em movimento. </dd>
+<dd>
+false Quando o veículo atingiu o fim do estacionamento. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

@@ -1,0 +1,68 @@
+\hypertarget{class_central}{}\section{Referência à classe Central}
+\label{class_central}\index{Central@{Central}}
+
+
+Classe que implementa a comunicação com o veículo no estacionamento.  
+
+
+\subsection*{Membros públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_central_af9e3f40335a1656dd1c911d90c2fff29}\label{class_central_af9e3f40335a1656dd1c911d90c2fff29}} 
+static void \mbox{\hyperlink{class_central_af9e3f40335a1656dd1c911d90c2fff29}{main}} (String argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Método principal que executa a comunicação num todo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Membros protegidos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_central_a280abaf8e4b428b5c7a25065c61df800}{write\+Msg}} (Data\+Output\+Stream writer, String msg)  throws I\+O\+Exception 
+\begin{DoxyCompactList}\small\item\em Método que envia mensagens para o veículo. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{class_central_a30d9b358a611ce826fcc31165745c228}{process\+Msg}} (String msg)
+\begin{DoxyCompactList}\small\item\em Método que processa mensagens advindas do veículo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Classe que implementa a comunicação com o veículo no estacionamento. 
+
+\subsection{Documentação dos métodos}
+\mbox{\Hypertarget{class_central_a30d9b358a611ce826fcc31165745c228}\label{class_central_a30d9b358a611ce826fcc31165745c228}} 
+\index{Central@{Central}!process\+Msg@{process\+Msg}}
+\index{process\+Msg@{process\+Msg}!Central@{Central}}
+\subsubsection{\texorpdfstring{process\+Msg()}{processMsg()}}
+{\footnotesize\ttfamily static String Central.\+process\+Msg (\begin{DoxyParamCaption}\item[{String}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Método que processa mensagens advindas do veículo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em msg} & Mensagem enviada pelo veículo.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+\char`\"{}\+V\+\_\+1\char`\"{} Quando a mensagem recebida for válida. 
+
+null Quando não houve recebimento da mensagem. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_central_a280abaf8e4b428b5c7a25065c61df800}\label{class_central_a280abaf8e4b428b5c7a25065c61df800}} 
+\index{Central@{Central}!write\+Msg@{write\+Msg}}
+\index{write\+Msg@{write\+Msg}!Central@{Central}}
+\subsubsection{\texorpdfstring{write\+Msg()}{writeMsg()}}
+{\footnotesize\ttfamily static void Central.\+write\+Msg (\begin{DoxyParamCaption}\item[{Data\+Output\+Stream}]{writer,  }\item[{String}]{msg }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Método que envia mensagens para o veículo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em writer} & Variável responsável pela escrita (envio) das mensagens. \\
+\hline
+{\em msg} & Mensagem a ser enviada ao veículo. \\
+\hline
+\end{DoxyParams}
+
+
+A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_central_8java}{Central.\+java}}\end{DoxyCompactItemize}

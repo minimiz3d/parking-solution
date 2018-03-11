@@ -1,3 +1,11 @@
+/**
+ * @brief Este código implementa a central de comunicação da solução de estacionamento baseada em comunicação V2I.
+ * Para mais detalhes acesse: https://github.com/minimiz3d/parking-solution 
+ * @file Central.java
+ * @author Árthur Tolfo Pinheiro
+ * @date 2018-03-10
+ */
+
 import java.io.*;
 import java.net.*;
 import java.nio.CharBuffer;
@@ -7,7 +15,13 @@ import java.util.*;
 	Rodar: 						java -cp utilities.jar;. Central
 */
 
+/**
+ * @brief Classe que implementa a comunicação com o veículo no estacionamento.
+ */
 public class Central {
+	/**
+	 * @brief Método principal que executa a comunicação num todo.
+	 */
     public static void main(String argv[]) {
 		String HOST 			= "192.168.0.101";
 		int PORT 				= 8070;
@@ -71,23 +85,31 @@ public class Central {
 
     }
 
-	private static void writeMsg(DataOutputStream writer, String msg) throws IOException {
+	/**
+	 * @brief Método que envia mensagens para o veículo.
+	 * 
+	 * @param writer Variável responsável pela escrita (envio) das mensagens.
+	 * @param msg Mensagem a ser enviada ao veículo.
+	 */
+	protected static void writeMsg(DataOutputStream writer, String msg) throws IOException {
 		// writer.flush();
 		System.out.println("> Enviando: " + msg);
 		writer.writeUTF(msg);
 	}
 
-	private static String processMsg(String msg) {
-		// Boolean teste = Arrays.asList(msg.split(" ")).contains("parking");
-
+	/**
+	 * @brief Método que processa mensagens advindas do veículo.
+	 * 
+	 * @param msg Mensagem enviada pelo veículo.
+	 * 
+	 * @return "V_1" Quando a mensagem recebida for válida. 
+	 * @return null Quando não houve recebimento da mensagem.
+	 */
+	protected static String processMsg(String msg) {
 		if (msg.equals("cheguei") || msg.equals(" cheguei")) {
 			System.out.println("Bem-vindo ao estacionamento!");
 			return "V_1";
 		}
-		// else if (teste || msg.equals("+IPD,")){
-		// 	System.out.println("Aguardando o veiculo estacionar...");
-		// 	return "waiting";
-		// }
 		
 		return null;
 	}

@@ -1,0 +1,133 @@
+\hypertarget{parking-solution_8ino}{}\section{Referência ao ficheiro parking-\/solution.ino}
+\label{parking-solution_8ino}\index{parking-\/solution.\+ino@{parking-\/solution.\+ino}}
+
+
+Este código implementa o veículo testado na solução de estacionamento baseada em comunicação V2I. Para mais detalhes acesse\+: \href{https://github.com/minimiz3d/parking-solution}{\tt https\+://github.\+com/minimiz3d/parking-\/solution}.  
+
+
+{\ttfamily \#include $<$E\+S\+P8266.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Follow.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Ultrassonic.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_aaf46549480a528db5ba7d78e7270b5a9}\label{parking-solution_8ino_aaf46549480a528db5ba7d78e7270b5a9}} 
+\#define {\bfseries S\+S\+ID}~\char`\"{}dlink-\/4\char`\"{}
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a9e8538fad4eee548302ad9f60e6d47ca}\label{parking-solution_8ino_a9e8538fad4eee548302ad9f60e6d47ca}} 
+\#define {\bfseries P\+A\+S\+S\+W\+O\+RD}~\char`\"{}abcd1234\char`\"{}
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a614217d263be1fb1a5f76e2ff7be19a2}\label{parking-solution_8ino_a614217d263be1fb1a5f76e2ff7be19a2}} 
+\#define {\bfseries P\+O\+RT}~8070
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a3ff51a8faea0d47e46d5ae9fceb45988}\label{parking-solution_8ino_a3ff51a8faea0d47e46d5ae9fceb45988}} 
+E\+S\+P8266 {\bfseries wifi} (Serial1)
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{parking-solution_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+void \mbox{\hyperlink{parking-solution_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Método que define as configurações de comunicação a ser utilizada. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{parking-solution_8ino_afe461d27b9c48d5921c00d521181f12f}\label{parking-solution_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+void \mbox{\hyperlink{parking-solution_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Método principal que executa continuamente. Aqui é implementada a troca de informações entre veículo e central. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{parking-solution_8ino_a1fa00cb28ff23a19c53ea81f55d85a66}\label{parking-solution_8ino_a1fa00cb28ff23a19c53ea81f55d85a66}} 
+void \mbox{\hyperlink{parking-solution_8ino_a1fa00cb28ff23a19c53ea81f55d85a66}{follow\+Line}} ()
+\begin{DoxyCompactList}\small\item\em Método que implementa a movimentação do veículo baseada no método seguidor de linha. A \char`\"{}percepção\char`\"{} do veículo quanto ao trajeto é realizada por cálculos que levam em conta a refletância atual dos sensores Q\+R\+E1113. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{parking-solution_8ino_a5e884bfc5853965874210cfb2edbfa14}\label{parking-solution_8ino_a5e884bfc5853965874210cfb2edbfa14}} 
+void \mbox{\hyperlink{parking-solution_8ino_a5e884bfc5853965874210cfb2edbfa14}{process\+Msg}} ()
+\begin{DoxyCompactList}\small\item\em Método que processa as mensagens advindas da central. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{parking-solution_8ino_afb16af85febe65a8f968f271378aba74}\label{parking-solution_8ino_afb16af85febe65a8f968f271378aba74}} 
+void \mbox{\hyperlink{parking-solution_8ino_afb16af85febe65a8f968f271378aba74}{send\+Msg}} ()
+\begin{DoxyCompactList}\small\item\em Método de transmissão de dados para a central. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{parking-solution_8ino_a28085526e415309b308fea6fc73d744f}{check\+Parking\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Método que verifica a proximidade com a parede (fim de estacionamento). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_aa85fb31c2a5bce22940ba03366a50ab3}\label{parking-solution_8ino_aa85fb31c2a5bce22940ba03366a50ab3}} 
+int {\bfseries arrival\+Thr} = 995
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_aa5ec0bd88a5394de7d097d530c35c32c}\label{parking-solution_8ino_aa5ec0bd88a5394de7d097d530c35c32c}} 
+int {\bfseries default\+Thr} = 850
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a218b4f7c6cc2681a99c23a3b089d68b1}\label{parking-solution_8ino_a218b4f7c6cc2681a99c23a3b089d68b1}} 
+int {\bfseries speed} = 120
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_aa7b7134b6a2eb8f7c4db6eb16b2dfc7c}\label{parking-solution_8ino_aa7b7134b6a2eb8f7c4db6eb16b2dfc7c}} 
+int {\bfseries parking\+Speed} = 180
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_aa8a1e82701eb2e381658ab63b26b9e30}\label{parking-solution_8ino_aa8a1e82701eb2e381658ab63b26b9e30}} 
+\mbox{\hyperlink{class_motor}{Motor}} $\ast$ {\bfseries motor} = new \mbox{\hyperlink{class_motor}{Motor}}(6, 7, 9, 8, 10, 11)
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a38da3453ce0afdded979e2c2161c51de}\label{parking-solution_8ino_a38da3453ce0afdded979e2c2161c51de}} 
+\mbox{\hyperlink{class_ultrassonic}{Ultrassonic}} $\ast$ {\bfseries ultrassonic} = new \mbox{\hyperlink{class_ultrassonic}{Ultrassonic}}(A0, A1)
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a73ef847c074d2baf460c59f251ffd3d4}\label{parking-solution_8ino_a73ef847c074d2baf460c59f251ffd3d4}} 
+\mbox{\hyperlink{class_follow}{Follow}} $\ast$ {\bfseries followmiddle} = new \mbox{\hyperlink{class_follow}{Follow}}(A2)
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a046cfba371102afa4af12b8518dbb054}\label{parking-solution_8ino_a046cfba371102afa4af12b8518dbb054}} 
+\mbox{\hyperlink{class_follow}{Follow}} $\ast$ {\bfseries followleft} = new \mbox{\hyperlink{class_follow}{Follow}}(A3)
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a469ba30678c24ff29c0312b8f1b86d57}\label{parking-solution_8ino_a469ba30678c24ff29c0312b8f1b86d57}} 
+\mbox{\hyperlink{class_follow}{Follow}} $\ast$ {\bfseries followright} = new \mbox{\hyperlink{class_follow}{Follow}}(A5)
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_ade5862e7d955b2d0109f6c292405f0b1}\label{parking-solution_8ino_ade5862e7d955b2d0109f6c292405f0b1}} 
+uint8\+\_\+t {\bfseries mux\+\_\+id}
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_afa8800a1986a982d20f57611c8720de7}\label{parking-solution_8ino_afa8800a1986a982d20f57611c8720de7}} 
+uint8\+\_\+t {\bfseries buffer} \mbox{[}128\mbox{]} = \{0\}
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a32d2f5216cddb59c7cc8fb2806a7e727}\label{parking-solution_8ino_a32d2f5216cddb59c7cc8fb2806a7e727}} 
+char $\ast$ {\bfseries msg} = \char`\"{}arduino\textbackslash{}n\char`\"{}
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a3a1338eb3eaa558722a2778f33e7b407}\label{parking-solution_8ino_a3a1338eb3eaa558722a2778f33e7b407}} 
+bool {\bfseries flag\+Cheguei} = false
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_aee9399e0ee90a2982d7de00ac826f097}\label{parking-solution_8ino_aee9399e0ee90a2982d7de00ac826f097}} 
+bool {\bfseries ack} = false
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_ae00f7a5afdb222cb3fb2b6717b86f57f}\label{parking-solution_8ino_ae00f7a5afdb222cb3fb2b6717b86f57f}} 
+bool {\bfseries parking} = false
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a1d67bd6634a9002df97231d8c8dbc66c}\label{parking-solution_8ino_a1d67bd6634a9002df97231d8c8dbc66c}} 
+bool {\bfseries ok} = false
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a376eb4e1c9db5513980312a882b7bbce}\label{parking-solution_8ino_a376eb4e1c9db5513980312a882b7bbce}} 
+int {\bfseries dist\+Counter} = 0
+\item 
+\mbox{\Hypertarget{parking-solution_8ino_a793aeddf47ecb66af07b09370794b7db}\label{parking-solution_8ino_a793aeddf47ecb66af07b09370794b7db}} 
+int {\bfseries vaga} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Este código implementa o veículo testado na solução de estacionamento baseada em comunicação V2I. Para mais detalhes acesse\+: \href{https://github.com/minimiz3d/parking-solution}{\tt https\+://github.\+com/minimiz3d/parking-\/solution}. 
+
+\begin{DoxyAuthor}{Autor}
+Árthur Tolfo Pinheiro 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+2018-\/03-\/10 
+\end{DoxyDate}
+
+
+\subsection{Documentação das funções}
+\mbox{\Hypertarget{parking-solution_8ino_a28085526e415309b308fea6fc73d744f}\label{parking-solution_8ino_a28085526e415309b308fea6fc73d744f}} 
+\index{parking-\/solution.\+ino@{parking-\/solution.\+ino}!check\+Parking\+Status@{check\+Parking\+Status}}
+\index{check\+Parking\+Status@{check\+Parking\+Status}!parking-\/solution.\+ino@{parking-\/solution.\+ino}}
+\subsubsection{\texorpdfstring{check\+Parking\+Status()}{checkParkingStatus()}}
+{\footnotesize\ttfamily bool check\+Parking\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que verifica a proximidade com a parede (fim de estacionamento). 
+
+\begin{DoxyReturn}{Retorna}
+true Quando o veículo deve continuar em movimento. 
+
+false Quando o veículo atingiu o fim do estacionamento. 
+\end{DoxyReturn}

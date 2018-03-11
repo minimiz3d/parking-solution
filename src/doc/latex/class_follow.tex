@@ -1,0 +1,97 @@
+\hypertarget{class_follow}{}\section{Referência à classe Follow}
+\label{class_follow}\index{Follow@{Follow}}
+\subsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_follow_a9f7d35bd142ceb97d843c66c7d531da7}{Follow}} (int sensor)
+\begin{DoxyCompactList}\small\item\em Construtor do objeto \char`\"{}\+Follow\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_follow_aafdfa3a55f4452e711851b779d254ba6}\label{class_follow_aafdfa3a55f4452e711851b779d254ba6}} 
+void \mbox{\hyperlink{class_follow_aafdfa3a55f4452e711851b779d254ba6}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Método que inicializa o sensor em questão como dado de entrada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_follow_a819180a10759319966d6d81565698fb8}{read}} ()
+\item 
+bool \mbox{\hyperlink{class_follow_af29fb2cc78da7fb644583becd37c2570}{alert}} (int treshold, int sensor)
+\begin{DoxyCompactList}\small\item\em Método que verifica se a leitura ultrapassou o valor limite de refletância esperado. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_follow_a56dc95b9da7e5fb9ab443d5fd6165c73}{check\+LL}} (int not\+Black)
+\begin{DoxyCompactList}\small\item\em Método que verifica se a marcação no chão é preta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentação dos Construtores \& Destrutor}
+\mbox{\Hypertarget{class_follow_a9f7d35bd142ceb97d843c66c7d531da7}\label{class_follow_a9f7d35bd142ceb97d843c66c7d531da7}} 
+\index{Follow@{Follow}!Follow@{Follow}}
+\index{Follow@{Follow}!Follow@{Follow}}
+\subsubsection{\texorpdfstring{Follow()}{Follow()}}
+{\footnotesize\ttfamily Follow\+::\+Follow (\begin{DoxyParamCaption}\item[{int}]{sensor }\end{DoxyParamCaption})}
+
+
+
+Construtor do objeto \char`\"{}\+Follow\char`\"{}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em sensor} & Define qual dos sensores de refletância está sendo instanciado. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentação dos métodos}
+\mbox{\Hypertarget{class_follow_af29fb2cc78da7fb644583becd37c2570}\label{class_follow_af29fb2cc78da7fb644583becd37c2570}} 
+\index{Follow@{Follow}!alert@{alert}}
+\index{alert@{alert}!Follow@{Follow}}
+\subsubsection{\texorpdfstring{alert()}{alert()}}
+{\footnotesize\ttfamily bool Follow\+::alert (\begin{DoxyParamCaption}\item[{int}]{treshold,  }\item[{int}]{sensor }\end{DoxyParamCaption})}
+
+
+
+Método que verifica se a leitura ultrapassou o valor limite de refletância esperado. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em treshold} & Valor limite de refletância. \\
+\hline
+{\em sensor} & Identificação do sensor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+true Quando a refletância lida for superior ao limite estabelecido -\/ há uma marcação no chão. 
+
+false Quando o valor lido estiver dentro do esperado. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_follow_a56dc95b9da7e5fb9ab443d5fd6165c73}\label{class_follow_a56dc95b9da7e5fb9ab443d5fd6165c73}} 
+\index{Follow@{Follow}!check\+LL@{check\+LL}}
+\index{check\+LL@{check\+LL}!Follow@{Follow}}
+\subsubsection{\texorpdfstring{check\+L\+L()}{checkLL()}}
+{\footnotesize\ttfamily bool Follow\+::check\+LL (\begin{DoxyParamCaption}\item[{int}]{not\+Black }\end{DoxyParamCaption})}
+
+
+
+Método que verifica se a marcação no chão é preta. 
+
+\begin{DoxyAuthor}{Autor}
+Árthur Tolfo Pinheiro 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parâmetros}
+{\em not\+Black} & Valor associado à cor preta. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+true Quando não há tarja preta no chão. 
+
+false Quando há tarja preta no chão. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_follow_a819180a10759319966d6d81565698fb8}\label{class_follow_a819180a10759319966d6d81565698fb8}} 
+\index{Follow@{Follow}!read@{read}}
+\index{read@{read}!Follow@{Follow}}
+\subsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily int Follow\+::read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Retorna}
+int Valor lido pelo sensor. 
+\end{DoxyReturn}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+Follow.\+h\item 
+\mbox{\hyperlink{_follow_8cpp}{Follow.\+cpp}}\end{DoxyCompactItemize}

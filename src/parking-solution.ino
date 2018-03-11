@@ -1,3 +1,11 @@
+/**
+ * @brief Este código implementa o veículo testado na solução de estacionamento baseada em comunicação V2I.
+ * Para mais detalhes acesse: https://github.com/minimiz3d/parking-solution 
+ * @file parking-solution.ino
+ * @author Árthur Tolfo Pinheiro
+ * @date 2018-03-10
+ */
+
 #include <ESP8266.h>
 #include <stdio.h>
 #include "Motor.h"
@@ -5,33 +13,38 @@
 #include "Ultrassonic.h"
 
 /* Sensores */
-int arrivalThr = 995;
-int defaultThr = 850;
-int speed = 120;
-int parkingSpeed = 180;
-Motor *motor = new Motor(6, 7, 9, 8, 10, 11);
-Ultrassonic *ultrassonic = new Ultrassonic(A0, A1);
-Follow *followmiddle = new Follow(A2);
-Follow *followleft = new Follow(A3);
-Follow *followright = new Follow(A5);
+int arrivalThr              = 995;
+int defaultThr              = 850;
+int speed                   = 120;
+int parkingSpeed            = 180;
+Motor *motor                = new Motor(6, 7, 9, 8, 10, 11);
+Ultrassonic *ultrassonic    = new Ultrassonic(A0, A1);
+Follow *followmiddle        = new Follow(A2);
+Follow *followleft          = new Follow(A3);
+Follow *followright         = new Follow(A5);
 
 /* Conexão WiFi */
 ESP8266 wifi(Serial1);
-#define SSID "dlink-4"
-#define PASSWORD "abcd1234"
-#define PORT 8070
+#define SSID                "dlink-4"
+#define PASSWORD            "abcd1234"
+#define PORT                8070
 uint8_t mux_id;
-uint8_t buffer[128] = {0};
-char *msg = "arduino\n";
-bool flagCheguei = false;
-bool ack = false;
-bool parking = false;
-bool ok = false;
-int distCounter = 0;
-int vaga = 0;
 
-void setup(void)
-{
+/* Variáveis responsáveis pela lógica do sistema */
+uint8_t buffer[128]         = {0};
+char *msg                   = "arduino\n";
+bool flagCheguei            = false;
+bool ack                    = false;
+bool parking                = false;
+bool ok                     = false;
+int distCounter             = 0;
+int vaga                    = 0;
+
+/**
+ * @brief Método que define as configurações de comunicação a ser utilizada.
+ * 
+ */
+void setup() {
     Serial.begin(9600);
     Serial.print("Iniciando Setup. ");
 
@@ -49,50 +62,42 @@ void setup(void)
     Serial.flush();
 
     /* Módulo para operar em modo Station (conecta em WiFi) e modo AP (é um ponto de WiFi tambem) */
-    if (wifi.setOprToStationSoftAP())
-    {
+    if (wifi.setOprToStationSoftAP()) {
         Serial.println("Station e AP OK.");
         Serial.flush();
     }
-    else
-    {
+    else {
         Serial.println("Erro em setar Station e AP.");
         Serial.flush();
     }
 
     /* Conectar no ponto de WiFi informado no inicio do codigo, e ver se corre tudo certo */
-    if (wifi.joinAP(SSID, PASSWORD))
-    {
+    if (wifi.joinAP(SSID, PASSWORD)) {
         Serial.println("Conectado com sucesso.");
         Serial.println("IP: ");
         Serial.println(wifi.getLocalIP().c_str());
     }
-    else
-    {
+    else {
         Serial.println("Falha na conexao AP.");
     }
     Serial.flush();
 
     /* Habilitando multiplas conexoes */
-    if (wifi.enableMUX())
-    {
+    if (wifi.enableMUX()) {
         Serial.println("Multiplas conexoes OK.");
     }
-    else
-    {
+    else {
         Serial.println("Erro ao setar multiplas conexoes.");
     }
     Serial.flush();
 
     /* Inicia servidor TCP */
-    if (wifi.startTCPServer(PORT))
-    {
+    if (wifi.startTCPServer(PORT)) {
         Serial.print("Servidor iniciado com sucesso - ");
         Serial.print("Porta: ");
         Serial.println(PORT);
     }
-    else
-    {
+    else {
         Serial.println("Erro ao iniciar servidor.");
     }
     Serial.flush();
@@ -106,30 +111,30 @@ void setup(void)
     Serial.println("ok.");
 }
 
-void loop(void)
-{
-    if (!checkParkingStatus())
-    {
+/**
+ * @brief Método principal que executa continuamente.
+ * Aqui é implementada a troca de informações entre veículo e central.
+ */
+void loop() {
+    /* Verifica se deve parar caso esteja no fim do procedimento */
+    if (!checkParkingStatus()) {
         motor->stop();
     }
     else
-        /* Seguidor de linha (FUNCIONAL) */
+        /* Seguidor de linha */
         followLine();
 
     /* Reset do buffer */
     buffer[128] = {0};
 
     /* Comunicação (inicia quando o carro estiver chegado no estacionamento) */
-    if (flagCheguei)
-    {
+    if (flagCheguei) {
         /* Recebendo da central */
         uint32_t len = wifi.recv(&mux_id, buffer, sizeof(buffer), 128);
-        if (len > 0)
-        {
+        if (len > 0) {
             /* Mensagem recebida */
             Serial.print("< Recebendo: ");
-            for (uint32_t i = 0; i < len; i++)
-            {
+            for (uint32_t i = 0; i < len; i++) {
                 Serial.print((char)buffer[i]);
                 Serial.flush();
             }
@@ -151,17 +156,18 @@ void loop(void)
     }
 }
 
-void followLine()
-{
+/**
+ * @brief Método que implementa a movimentação do veículo baseada no método seguidor de linha.
+ * A "percepção" do veículo quanto ao trajeto é realizada por cálculos que levam em conta a refletância atual dos sensores QRE1113. 
+ */
+void followLine() {
     /* Sensor lateral */
-    if (followmiddle->alert(arrivalThr, 2))
-    {
+    if (followmiddle->alert(arrivalThr, 2)) {
         if (!ok)
             motor->stop();
 
         /* Chegando no estacionamento */
-        if (!flagCheguei)
-        {
+        if (!flagCheguei) {
             Serial.println("flagCheguei on");
             Serial.flush();
             flagCheguei = true;
@@ -174,19 +180,16 @@ void followLine()
         }
 
         /* Verificando vaga correta */
-        else
-        {
+        else {
             // 2
-            if (parking && ok)
-            {
+            if (parking && ok) {
                 motor->stop();
                 msg = "estacionando\n";
                 sendMsg();
 
                 /* TODO: Melhorar esta lógica */
                 vaga--;
-                if (vaga == 0)
-                {
+                if (vaga == 0) {
                     /* Essa curva fará o carro ir até a vaga esperada */
                     Serial.print("vagacorreta\n");
                     parking = false;
@@ -200,25 +203,20 @@ void followLine()
     }
 
     /* Sensores frontais */
-    if (followleft->alert(defaultThr, 0) && followright->alert(defaultThr, 1))
-    {
+    if (followleft->alert(defaultThr, 0) && followright->alert(defaultThr, 1)) {
         motor->stop();
     }
-    else if (followright->alert(defaultThr, 1))
-    {
+    else if (followright->alert(defaultThr, 1)) {
         motor->left();
     }
-    else if (followleft->alert(defaultThr, 0))
-    {
+    else if (followleft->alert(defaultThr, 0)) {
         motor->right();
     }
 
-    // Ja chegou no inicio
-    if (flagCheguei)
-    {
-        // Depois de ter obtido o numero da vaga, verifica se esta em movimento observando se nao esta sobre uma tarja preta
-        if (followmiddle->checkLL(900))
-        {
+    /* Ja chegou no inicio */
+    if (flagCheguei) {
+        /* Depois de ter obtido o numero da vaga, verifica se esta em movimento observando se nao esta sobre uma tarja preta */
+        if (followmiddle->checkLL(900)) {
             parking = true;
         }
     }
@@ -226,9 +224,12 @@ void followLine()
     delay(15);
 }
 
+/**
+ * @brief Método que processa as mensagens advindas da central.
+ * 
+ */
 void processMsg() {
-    if ((char)buffer[2] == 'V')
-    {
+    if ((char)buffer[2] == 'V') {
         msg = "parking\n";
 
         /* Obtendo a vaga - funcional */
@@ -248,51 +249,53 @@ void processMsg() {
             3.  Estaciona-se (ultrassom on -> detecta fim do processo)
         */
 
-        // 1
         Serial.print("\nEtapa1done\n");
         ok = true;
     }
 }
 
-bool sendMsg()
-{
+/**
+ * @brief Método de transmissão de dados para a central.
+ *  
+ */
+void sendMsg() {
     /* Anuncia para a central */
-    if (wifi.send(mux_id, (const uint8_t *)msg, sizeof(buffer)))
-    {
+    if (wifi.send(mux_id, (const uint8_t *)msg, sizeof(buffer))) {
         Serial.print("> Enviando: " + (String)msg + "\r\n");
         ack = false;
     }
-    else
-    {
+    else {
         Serial.print("Erro enviando.\r\n");
     }
     Serial.flush();
 }
 
-bool checkParkingStatus()
-{
+/**
+ * @brief Método que verifica a proximidade com a parede (fim de estacionamento). 
+ * 
+ * @return true Quando o veículo deve continuar em movimento.
+ * @return false Quando o veículo atingiu o fim do estacionamento.
+ */
+bool checkParkingStatus() {
     int dist = ultrassonic->getDistance();
-    if ((dist <= 12) && (dist != 0) && (flagCheguei))
-    {
-        // Amostra quando obter distância esperada
+    if ((dist <= 12) && (dist != 0) && (flagCheguei)) {
+        /* Amostra quando obter distância esperada */
         distCounter++;
 
-        // DEBUG
+        /* DEBUG */
         Serial.print("PROX: ");
         Serial.println(dist);
         Serial.print("counter: ");
         Serial.println(distCounter);
     }
-    else
-    {
+    else {
         /* Faz o veiculo andar */
         motor->forward();
         motor->func();
     }
 
-    // Caso esteja próximo à parede
-    if (distCounter >= 15)
-    {
+    /* Caso esteja próximo à parede */
+    if (distCounter >= 15) {
         msg = "done\n";
         sendMsg();
 

@@ -2,7 +2,7 @@
 Solução para Estacionamento de Veículos Autônomos: uma implementação usando a plataforma Arduino
 
 **Manual de uso**\
-Para verificar o funcionamento deste sistema, deve-se primeiramente ter montado o estacionamento, assim como o veículo com os devidos componentes (ver Tabela 1 do artigo). Com estes procedimentos realizados, deve-se então:\
+Para verificar o funcionamento deste sistema, deve-se primeiramente ter montado o estacionamento, assim como o veículo com os devidos componentes (ver Tabela 1 do artigo). Com estes procedimentos realizados, deve-se então:
 
 1. Primeiramente clonar o repositório atual em um diretório qualquer:
     * git clone https://github.com/minimiz3d/parking-solution.git
@@ -15,4 +15,10 @@ Para verificar o funcionamento deste sistema, deve-se primeiramente ter montado 
     * Executar (forma alternativa, e mais simples): Utilizando alguma IDE de Java, deve-se compilar e rodar o mesmo código.
 5. Dessa forma o sistema iniciará.
 
-TODO: Terminar documentação.
+**Documentação**\
+Detalhes a respeito do código utilizado para esta aplicação estão localizados no diretório "doc". Além disso, por ter sido utilizada uma biblioteca para interface com o módulo WiFi tém-se o detalhamento desta no diretório "ITEADLIB_Arduino_WeeESP8266-master/doc".
+
+**Vídeo**\
+O manual de instalação e funcionalidades do sistema está disponível no seguinte endereço:
+
+TODO: Upar vídeo no youtube.

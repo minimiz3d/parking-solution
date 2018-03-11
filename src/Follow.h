@@ -3,7 +3,7 @@
 
 #include "Arduino.h"
 
-class Follow{
+class Follow {
 	private:
 		int sensor;
 	public:
