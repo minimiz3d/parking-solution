@@ -2,7 +2,7 @@
  * @brief Este código implementa a central de comunicação da solução de estacionamento baseada em comunicação V2I.
  * Para mais detalhes acesse: https://github.com/minimiz3d/parking-solution 
  * @file Central.java
- * @author Árthur Tolfo Pinheiro
+ * @author Arthur Tolfo Pinheiro
  * @date 2018-03-10
  */
 

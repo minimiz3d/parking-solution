@@ -16,9 +16,9 @@ Para verificar o funcionamento deste sistema, deve-se primeiramente ter montado 
 5. Dessa forma o sistema iniciará.
 
 **Documentação**\
-Detalhes a respeito do código utilizado para esta aplicação estão localizados no diretório "doc". Além disso, por ter sido utilizada uma biblioteca para interface com o módulo WiFi tém-se o detalhamento desta no diretório "ITEADLIB_Arduino_WeeESP8266-master/doc".
+Detalhes a respeito do código utilizado para esta aplicação estão localizados no diretório "doc/html". Para verificar todos a documentação de uma vez, pode-se abrir o arquivo "index.html" e verificar os detalhes de cada código. Além disso, por ter sido utilizada uma biblioteca para interface com o módulo WiFi tém-se o detalhamento desta no diretório "ITEADLIB_Arduino_WeeESP8266-master/doc".
 
 **Vídeo**\
-O manual de instalação e funcionalidades do sistema está disponível no seguinte endereço:
+O manual de instalação e funcionalidades do sistema está disponível no seguinte endereço: https://www.youtube.com/watch?v=7a-H6C_LRdQ&feature=youtu.be
 
-TODO: Upar vídeo no youtube.
+
